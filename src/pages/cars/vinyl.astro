@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Виниловая оклейка',
+  subtitle: 'Новый цвет без перекраски',
+  heroImage: '/images/services/vinyl-hero.jpg',
+  description: {
+    heading: 'Преображение за несколько дней',
+    text: 'Виниловая плёнка позволяет полностью изменить внешний вид автомобиля без покраски. Матовые, глянцевые, текстурные покрытия — сотни вариантов на выбор. Защищает оригинальный лак и легко снимается при продаже.',
+    image: '/images/services/vinyl-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Оклейка в 4 этапа',
+    steps: [
+      {
+        title: 'Дизайн',
+        text: 'Выбор цвета и типа плёнки',
+        image: '/images/process/vinyl-1.jpg',
+      },
+      {
+        title: 'Разборка',
+        text: 'Снятие элементов для чистой оклейки',
+        image: '/images/process/vinyl-2.jpg',
+      },
+      {
+        title: 'Оклейка',
+        text: 'Нанесение плёнки с прогревом',
+        image: '/images/process/vinyl-3.jpg',
+      },
+      {
+        title: 'Сборка',
+        text: 'Установка элементов обратно',
+        image: '/images/process/vinyl-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Преобразите свой автомобиль',
+    subheading: 'Покажем примеры работ',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

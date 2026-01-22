@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Полировка кузова',
+  subtitle: 'Восстановление блеска',
+  heroImage: '/images/services/paint-correction-hero.jpg',
+  description: {
+    heading: 'Как новый с завода',
+    text: 'Удаляем царапины, голограммы и окисление лака. Многоступенчатая полировка возвращает глубину цвета и зеркальный блеск. Идеальная подготовка перед нанесением керамики или PPF.',
+    image: '/images/services/paint-correction-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Полировка в 4 этапа',
+    steps: [
+      {
+        title: 'Осмотр',
+        text: 'Оцениваем состояние лака',
+        image: '/images/process/polish-1.jpg',
+      },
+      {
+        title: 'Мойка',
+        text: 'Деконтаминация поверхности',
+        image: '/images/process/polish-2.jpg',
+      },
+      {
+        title: 'Полировка',
+        text: 'Поэтапное удаление дефектов',
+        image: '/images/process/polish-3.jpg',
+      },
+      {
+        title: 'Финиш',
+        text: 'Финальная располировка',
+        image: '/images/process/polish-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Верните блеск кузову',
+    subheading: 'Оценим состояние бесплатно',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

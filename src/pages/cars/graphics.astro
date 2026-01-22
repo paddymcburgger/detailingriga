@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Графика и полосы',
+  subtitle: 'Индивидуальный дизайн',
+  heroImage: '/images/services/graphics-hero.jpg',
+  description: {
+    heading: 'Уникальный стиль',
+    text: 'Гоночные полосы, логотипы, индивидуальные рисунки — добавьте характер вашему автомобилю. Используем качественный винил с точной плоттерной резкой. Разрабатываем дизайн под ваши идеи или работаем по готовому макету.',
+    image: '/images/services/graphics-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'От идеи до результата',
+    steps: [
+      {
+        title: 'Идея',
+        text: 'Обсуждаем концепцию и стиль',
+        image: '/images/process/graphics-1.jpg',
+      },
+      {
+        title: 'Макет',
+        text: 'Создаём дизайн и согласовываем',
+        image: '/images/process/graphics-2.jpg',
+      },
+      {
+        title: 'Резка',
+        text: 'Точная резка на плоттере',
+        image: '/images/process/graphics-3.jpg',
+      },
+      {
+        title: 'Нанесение',
+        text: 'Аккуратная установка графики',
+        image: '/images/process/graphics-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Создайте уникальный дизайн',
+    subheading: 'Бесплатный макет под ваш автомобиль',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

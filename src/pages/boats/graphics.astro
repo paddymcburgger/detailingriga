@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Графика и надписи для катера',
+  subtitle: 'Название, номера, дизайн',
+  heroImage: '/images/services/boat-graphics-hero.jpg',
+  description: {
+    heading: 'Индивидуальность вашего катера',
+    text: 'Название катера, бортовые номера, декоративные элементы — всё из морского винила, устойчивого к воде и солнцу. Разрабатываем дизайн или работаем по вашему макету.',
+    image: '/images/services/boat-graphics-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'От макета до установки',
+    steps: [
+      {
+        title: 'Макет',
+        text: 'Создаём или адаптируем дизайн',
+        image: '/images/process/boat-graphics-1.jpg',
+      },
+      {
+        title: 'Резка',
+        text: 'Плоттерная резка винила',
+        image: '/images/process/boat-graphics-2.jpg',
+      },
+      {
+        title: 'Монтаж',
+        text: 'Точная установка элементов',
+        image: '/images/process/boat-graphics-3.jpg',
+      },
+      {
+        title: 'Финиш',
+        text: 'Проверка и обработка краёв',
+        image: '/images/process/boat-graphics-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Добавьте индивидуальности',
+    subheading: 'Бесплатный макет дизайна',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

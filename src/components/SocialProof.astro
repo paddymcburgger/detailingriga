@@ -1,0 +1,76 @@
+---
+interface Props {
+  text?: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+const {
+  text = 'посмотреть примеры работ по восстановлению и защите, более 10 видов услуг по уходу за Авто и Яхтами',
+  linkText = 'смотреть наши проекты',
+  linkHref = '/projects',
+} = Astro.props;
+---
+
+<section class="social-proof">
+  <div class="social-proof-container">
+    <p class="social-proof-text">{text}</p>
+    <a href={linkHref} class="social-proof-link">{linkText}</a>
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    background: var(--color-bg);
+    padding: 4rem 1.5rem;
+  }
+
+  .social-proof-container {
+    max-width: 600px;
+  }
+
+  .social-proof-text {
+    font-family: var(--font-main);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #000000;
+    margin: 0 0 1.5rem;
+  }
+
+  .social-proof-link {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: #000000;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s ease;
+  }
+
+  .social-proof-link:hover {
+    opacity: 0.7;
+  }
+
+  @media (min-width: 768px) {
+    .social-proof {
+      padding: 5rem 2rem;
+    }
+
+    .social-proof-container {
+      margin-left: 2rem;
+    }
+
+    .social-proof-text {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .social-proof {
+      padding: 6rem 3rem;
+    }
+
+    .social-proof-container {
+      margin-left: 3rem;
+    }
+  }
+</style>

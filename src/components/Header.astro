@@ -1,0 +1,281 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getTranslations, defaultLang } from '../i18n/translations';
+
+interface Props {
+  logo?: string;
+  currentLang?: string;
+}
+
+const { logo = "лого", currentLang = defaultLang } = Astro.props;
+const t = getTranslations(currentLang as 'ru' | 'en');
+const lang = currentLang;
+
+const basePath = currentLang === defaultLang ? '' : `/${currentLang}`;
+
+const navItems = [
+  { label: lang === 'ru' ? 'автомобили' : 'cars', href: `${basePath}/cars` },
+  { label: lang === 'ru' ? 'лодки' : 'boats', href: `${basePath}/boats` },
+  { label: lang === 'ru' ? 'бизнес' : 'business', href: `${basePath}/business` },
+  { label: lang === 'ru' ? 'контакты' : 'contact', href: `${basePath}/contact` },
+];
+---
+
+<header class="header">
+  <div class="header-container">
+    <a href={basePath || '/'} class="logo">{logo}</a>
+    
+    <nav class="nav-desktop">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+    
+    <div class="header-right">
+      <LanguageSwitcher currentLang={currentLang} />
+      
+      <button class="menu-btn" aria-label="Открыть меню" aria-expanded="false">
+        <span class="menu-text">{t.nav.menu}</span>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+  
+  <div class="mobile-menu">
+    <nav class="nav-mobile">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link-mobile">{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease;
+  }
+
+  .logo:hover {
+    opacity: 0.7;
+  }
+
+  .nav-desktop {
+    display: none;
+    gap: 2.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-link {
+    font-family: var(--font-main);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-bg-dark);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  .menu-text {
+    font-family: var(--font-main);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text);
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 20px;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--color-bg-dark);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger span:nth-child(1) { width: 100%; }
+  .hamburger span:nth-child(2) { width: 75%; }
+  .hamburger span:nth-child(3) { width: 50%; }
+
+  .menu-btn:hover .hamburger span {
+    width: 100%;
+  }
+
+  .menu-btn[aria-expanded="true"] .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .menu-btn[aria-expanded="true"] .hamburger span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+
+  .menu-btn[aria-expanded="true"] .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: var(--color-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+  }
+
+  .mobile-menu.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-link-mobile {
+    font-family: var(--font-main);
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: padding-left 0.2s ease;
+  }
+
+  .nav-link-mobile:hover {
+    padding-left: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .header-container {
+      padding: 1rem 2rem;
+    }
+
+    .nav-desktop {
+      display: flex;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    .menu-text {
+      display: block;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header-container {
+      padding: 1rem 3rem;
+    }
+
+    .nav-desktop {
+      gap: 3rem;
+    }
+  }
+</style>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('active');
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('active');
+    }
+  });
+</script>

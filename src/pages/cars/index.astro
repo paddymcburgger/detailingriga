@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import Footer from '../../components/Footer.astro';
+import { getTranslations } from '../../i18n/translations';
+
+const lang = 'ru';
+const t = getTranslations(lang);
+
+const services = [
+  {
+    image: '/images/services/glass-restoration.jpg',
+    title: 'Восстановление стёкол',
+    bookingHref: '/contact',
+    detailsHref: '/cars/glass-restoration',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/ppf.jpg',
+    title: 'Защитная плёнка PPF',
+    bookingHref: '/contact',
+    detailsHref: '/cars/ppf',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/vinyl.jpg',
+    title: 'Виниловая оклейка',
+    bookingHref: '/contact',
+    detailsHref: '/cars/vinyl',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/graphics.jpg',
+    title: 'Графика и полосы',
+    bookingHref: '/contact',
+    detailsHref: '/cars/graphics',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/tint.jpg',
+    title: 'Тонировка стёкол',
+    bookingHref: '/contact',
+    detailsHref: '/cars/tint',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/paint-correction.jpg',
+    title: 'Полировка кузова',
+    bookingHref: '/contact',
+    detailsHref: '/cars/paint-correction',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+];
+---
+
+<Layout 
+  title="Услуги для автомобилей | Detailing Riga"
+  description="Защита и уход за автомобилем в Риге. PPF, винил, тонировка, полировка, восстановление стёкол."
+  lang={lang}
+>
+  <section class="hero">
+    <h1>Автомобили</h1>
+    <p>Защита, уход и преображение</p>
+  </section>
+  
+  <ServiceCards services={services} />
+  <Footer 
+  ctaSmall="Искали детейлинг авто в Риге?"
+  ctaLarge="ДАВАЙТЕ ОБСУДИМ"
+/>
+</Layout>
+
+<style>
+  .hero {
+    margin-top: 57px;
+    padding: 5rem 2rem;
+    background: var(--color-bg-dark);
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-family: var(--font-main);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+
+  .hero p {
+    font-family: var(--font-main);
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      margin-top: 65px;
+      padding: 6rem 2rem;
+    }
+  }
+</style>

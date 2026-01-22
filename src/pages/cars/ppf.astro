@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Защитная плёнка PPF',
+  subtitle: 'Невидимая защита от сколов и царапин',
+  heroImage: '/images/services/ppf-hero.jpg',
+  description: {
+    heading: 'Защита лакокрасочного покрытия',
+    text: 'PPF (Paint Protection Film) — прозрачная полиуретановая плёнка, которая защищает кузов от сколов, царапин и химических воздействий. Самовосстанавливающееся покрытие затягивает мелкие повреждения при нагреве. Гарантия до 10 лет.',
+    image: '/images/services/ppf-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Профессиональная установка в 4 этапа',
+    steps: [
+      {
+        title: 'Замер',
+        text: 'Точные замеры и подбор плёнки под ваш автомобиль',
+        image: '/images/process/ppf-1.jpg',
+      },
+      {
+        title: 'Подготовка',
+        text: 'Мойка и деконтаминация кузова',
+        image: '/images/process/ppf-2.jpg',
+      },
+      {
+        title: 'Нанесение',
+        text: 'Точная установка плёнки без пузырей',
+        image: '/images/process/ppf-3.jpg',
+      },
+      {
+        title: 'Финиш',
+        text: 'Проверка краёв и финальная обработка',
+        image: '/images/process/ppf-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Защитите свой автомобиль',
+    subheading: 'Бесплатная консультация по выбору покрытия',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

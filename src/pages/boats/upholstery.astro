@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Перетяжка салона катера',
+  subtitle: 'Обновление интерьера',
+  heroImage: '/images/services/boat-upholstery-hero.jpg',
+  description: {
+    heading: 'Комфорт на воде',
+    text: 'Морской винил и ткани для сидений, подушек и панелей. Материалы устойчивы к воде, плесени и УФ-лучам. Восстанавливаем изношенный салон или создаём новый дизайн.',
+    image: '/images/services/boat-upholstery-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Перетяжка в 4 этапа',
+    steps: [
+      {
+        title: 'Осмотр',
+        text: 'Оцениваем объём работ',
+        image: '/images/process/boat-upholstery-1.jpg',
+      },
+      {
+        title: 'Материал',
+        text: 'Выбор ткани и цвета',
+        image: '/images/process/boat-upholstery-2.jpg',
+      },
+      {
+        title: 'Пошив',
+        text: 'Изготовление новых чехлов',
+        image: '/images/process/boat-upholstery-3.jpg',
+      },
+      {
+        title: 'Установка',
+        text: 'Монтаж в салон катера',
+        image: '/images/process/boat-upholstery-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Обновите салон катера',
+    subheading: 'Покажем образцы материалов',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

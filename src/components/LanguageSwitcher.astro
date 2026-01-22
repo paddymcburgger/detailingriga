@@ -1,0 +1,60 @@
+---
+import { languages, defaultLang } from '../i18n/translations';
+
+interface Props {
+  currentLang: string;
+}
+
+const { currentLang = defaultLang } = Astro.props;
+
+// Get current path without language prefix
+const pathname = Astro.url.pathname;
+const pathWithoutLang = pathname.replace(/^\/(en|ru)/, '') || '/';
+
+function getLocalizedPath(lang: string) {
+  if (lang === defaultLang) {
+    return pathWithoutLang;
+  }
+  return `/${lang}${pathWithoutLang}`;
+}
+---
+
+<div class="lang-switcher">
+  {Object.entries(languages).map(([lang, label]) => (
+    <a 
+      href={getLocalizedPath(lang)}
+      class={`lang-link ${lang === currentLang ? 'active' : ''}`}
+      aria-label={`Switch to ${label}`}
+    >
+      {lang.toUpperCase()}
+    </a>
+  ))}
+</div>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .lang-link {
+    font-family: var(--font-main);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .lang-link:hover {
+    color: var(--color-text);
+  }
+
+  .lang-link.active {
+    color: var(--color-text);
+    background: rgba(0, 0, 0, 0.05);
+  }
+</style>

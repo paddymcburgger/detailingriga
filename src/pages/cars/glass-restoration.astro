@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Восстановление стёкол',
+  subtitle: 'Удаление царапин и помутнений',
+  heroImage: '/images/services/glass-restoration-hero.jpg',
+  description: {
+    heading: 'Идеальная видимость',
+    text: 'Со временем на стёклах появляются царапины от дворников, водный камень и помутнения. Мы восстанавливаем прозрачность стекла без замены, удаляя дефекты профессиональной полировкой. Результат — чистое стекло без бликов и искажений.',
+    image: '/images/services/glass-restoration-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Восстановление в 4 этапа',
+    steps: [
+      {
+        title: 'Диагностика',
+        text: 'Оцениваем глубину царапин и степень повреждений',
+        image: '/images/process/glass-1.jpg',
+      },
+      {
+        title: 'Подготовка',
+        text: 'Очищаем и обезжириваем поверхность',
+        image: '/images/process/glass-2.jpg',
+      },
+      {
+        title: 'Полировка',
+        text: 'Удаляем дефекты специальными составами',
+        image: '/images/process/glass-3.jpg',
+      },
+      {
+        title: 'Защита',
+        text: 'Наносим гидрофобное покрытие',
+        image: '/images/process/glass-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Верните стёклам прозрачность',
+    subheading: 'Запишитесь на диагностику',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

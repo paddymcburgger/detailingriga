@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Защитная плёнка для катера',
+  subtitle: 'PPF для корпуса и деталей',
+  heroImage: '/images/services/boat-ppf-hero.jpg',
+  description: {
+    heading: 'Защита от ударов и солнца',
+    text: 'PPF защищает гелькоут от сколов при швартовке, царапин и УФ-выгорания. Прозрачная плёнка сохраняет внешний вид и облегчает уход. Срок службы до 7 лет.',
+    image: '/images/services/boat-ppf-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Установка в 4 этапа',
+    steps: [
+      {
+        title: 'Замер',
+        text: 'Определяем зоны защиты',
+        image: '/images/process/boat-ppf-1.jpg',
+      },
+      {
+        title: 'Подготовка',
+        text: 'Мойка и обезжиривание',
+        image: '/images/process/boat-ppf-2.jpg',
+      },
+      {
+        title: 'Установка',
+        text: 'Точное нанесение плёнки',
+        image: '/images/process/boat-ppf-3.jpg',
+      },
+      {
+        title: 'Проверка',
+        text: 'Контроль качества',
+        image: '/images/process/boat-ppf-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Защитите ваш катер',
+    subheading: 'Консультация по зонам защиты',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

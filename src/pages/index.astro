@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import VideoShowcase from '../components/VideoShowcase.astro';
+
+import SocialProof from '../components/SocialProof.astro';
+import Footer from '../components/Footer.astro';
+
+import { getTranslations } from '../i18n/translations';
+
+import heroGlassImg from '../assets/images/hero-glass-polishing.jpg';
+import heroCeramicImg from '../assets/images/hero-ceramic.jpg';
+import chipRemovalImg from '../assets/images/services/chip-removal.jpg';
+import ppfImg from '../assets/images/services/ppf.jpg';
+import waterStoneImg from '../assets/images/services/water-stone.jpg';
+import headlightsImg from '../assets/images/services/headlights.jpg';
+const lang = 'ru';
+const t = getTranslations(lang);
+
+// Hero slides
+const heroSlides = [
+  {
+    type: 'image' as const,
+    src: heroGlassImg.src,
+    title: t.services.glassPolishing,
+    subtitle: '-30% вместе с антидождь',
+    primaryBtn: { label: t.hero.booking, href: '#booking' },
+    secondaryBtn: { label: t.hero.learnMore, href: '/services/glass-polishing' },
+  },
+  {
+    type: 'image' as const,
+    src: heroCeramicImg.src,
+    title: t.services.ceramic,
+    subtitle: 'Защита до 5 лет',
+    primaryBtn: { label: t.hero.booking, href: '#booking' },
+    secondaryBtn: { label: t.hero.learnMore, href: '/services/ceramic' },
+  },
+];
+
+// Service cards
+const services = [
+  {
+    image: chipRemovalImg.src,
+    title: t.services.chipRemoval,
+    bookingHref: '#booking',
+    detailsHref: '/cars/chip-removal',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: ppfImg.src,
+    title: t.services.ppf,
+    bookingHref: '#booking',
+    detailsHref: '/cars/ppf',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: waterStoneImg.src,
+    title: t.services.waterStone,
+    bookingHref: '#booking',
+    detailsHref: '/cars/water-stone',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: headlightsImg.src,
+    title: t.services.headlights,
+    bookingHref: '#booking',
+    detailsHref: '/cars/headlights',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+];
+
+
+
+// Services 2
+const services2 = [
+  {
+    image: '/images/services/boat-upholstery.jpg',
+    title: t.services.boatUpholstery,
+    bookingHref: '/contact',
+    detailsHref: '/boats/upholstery',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/boat-vinyl.jpg',
+    title: t.services.boatVinyl,
+    bookingHref: '/contact',
+    detailsHref: '/boats/vinyl',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/signage.jpg',
+    title: t.services.signage,
+    bookingHref: '/contact',
+    detailsHref: '/business/signage',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+  {
+    image: '/images/services/windows.jpg',
+    title: t.services.windowGraphics,
+    bookingHref: '/contact',
+    detailsHref: '/business/window-graphics',
+    bookingLabel: t.common.booking,
+    detailsLabel: t.common.details,
+  },
+];
+
+---
+
+
+
+<Layout 
+  title={t.seo.homeTitle}
+  description={t.seo.siteDescription}
+  lang={lang}
+>
+  <HeroCarousel slides={heroSlides} />
+  <ServiceCards services={services} />
+  <VideoShowcase 
+    youtubeId="dQw4w9WgXcQ"
+    title={t.services.glassPolishing}
+    primaryBtn={{ label: t.common.booking, href: '#booking' }}
+    secondaryBtn={{ label: t.common.details, href: '/cars/glass-polishing' }}
+  />
+  <ServiceCards services={services2} />
+  <SocialProof />
+  <Footer />
+</Layout>

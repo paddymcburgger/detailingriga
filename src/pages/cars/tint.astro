@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Тонировка стёкол',
+  subtitle: 'Комфорт и приватность',
+  heroImage: '/images/services/tint-hero.jpg',
+  description: {
+    heading: 'Защита от солнца и взглядов',
+    text: 'Качественная тонировка снижает нагрев салона, защищает от УФ-лучей и добавляет приватности. Используем сертифицированные плёнки, соответствующие нормам. Гарантия от выгорания и пузырей.',
+    image: '/images/services/tint-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Тонировка в 4 этапа',
+    steps: [
+      {
+        title: 'Выбор',
+        text: 'Подбираем степень затемнения',
+        image: '/images/process/tint-1.jpg',
+      },
+      {
+        title: 'Раскрой',
+        text: 'Точная резка под ваши стёкла',
+        image: '/images/process/tint-2.jpg',
+      },
+      {
+        title: 'Установка',
+        text: 'Нанесение без пыли и пузырей',
+        image: '/images/process/tint-3.jpg',
+      },
+      {
+        title: 'Сушка',
+        text: 'Финальная проверка качества',
+        image: '/images/process/tint-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Добавьте комфорта',
+    subheading: 'Подберём оптимальный вариант',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

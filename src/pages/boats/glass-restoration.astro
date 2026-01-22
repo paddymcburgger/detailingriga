@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Полировка стёкол катера',
+  subtitle: 'Восстановление прозрачности',
+  heroImage: '/images/services/boat-glass-hero.jpg',
+  description: {
+    heading: 'Чистые стёкла — безопасное плавание',
+    text: 'Морская соль, солнце и брызги оставляют следы на стёклах. Удаляем помутнения, царапины и солевые отложения. Восстанавливаем прозрачность без замены стекла.',
+    image: '/images/services/boat-glass-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Восстановление в 4 этапа',
+    steps: [
+      {
+        title: 'Осмотр',
+        text: 'Оцениваем состояние стёкол',
+        image: '/images/process/boat-glass-1.jpg',
+      },
+      {
+        title: 'Очистка',
+        text: 'Удаляем соль и загрязнения',
+        image: '/images/process/boat-glass-2.jpg',
+      },
+      {
+        title: 'Полировка',
+        text: 'Убираем помутнения и царапины',
+        image: '/images/process/boat-glass-3.jpg',
+      },
+      {
+        title: 'Защита',
+        text: 'Наносим защитное покрытие',
+        image: '/images/process/boat-glass-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Восстановите видимость',
+    subheading: 'Подготовьте катер к сезону',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />

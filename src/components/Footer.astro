@@ -1,0 +1,172 @@
+---
+interface Props {
+  ctaSmall?: string;
+  ctaLarge?: string;
+  ctaHref?: string;
+  address?: string;
+  instagram?: string;
+  youtube?: string;
+}
+
+const {
+  ctaSmall = 'Нужен Дитейлинг?',
+  ctaLarge = 'ДАВАЙТЕ ОБСУДИМ',
+  ctaHref = '/contact',
+  address = 'Ул Ебущихся Карликов 69',
+  instagram = 'https://instagram.com/',
+  youtube = 'https://youtube.com/',
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-cta">
+      <span class="cta-small">{ctaSmall}</span>
+      <a href={ctaHref} class="cta-large">{ctaLarge}</a>
+    </div>
+    
+    <div class="footer-info">
+      <div class="footer-address">
+        <span class="footer-label">Адресс</span>
+        <p>{address}</p>
+      </div>
+      
+      <div class="footer-social">
+        <a href={instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={youtube} target="_blank" rel="noopener">Youtube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+  background: var(--color-bg);
+  padding: 4rem 1.5rem;
+ 
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.footer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  order: 2;
+}
+
+.cta-small {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.cta-large {
+  font-family: var(--font-main);
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: 1.1;
+  position: relative;
+  width: fit-content;
+}
+
+.cta-large::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-bg-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.cta-large:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  order: 1;
+}
+
+.footer-label {
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.footer-address p {
+  font-family: var(--font-main);
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-social a {
+  font-family: var(--font-main);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-social a:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding: 5rem 2rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+  }
+
+  .footer-info {
+    order: 1;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .footer-cta {
+    order: 2;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: 6rem 3rem;
+  }
+}
+
+</style>

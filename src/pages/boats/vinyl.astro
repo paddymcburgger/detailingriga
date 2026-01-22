@@ -1,0 +1,46 @@
+---
+import ServicePage from '../../layouts/ServicePage.astro';
+
+const service = {
+  title: 'Оклейка катера винилом',
+  subtitle: 'Новый цвет без перекраски',
+  heroImage: '/images/services/boat-vinyl-hero.jpg',
+  description: {
+    heading: 'Обновление внешнего вида',
+    text: 'Виниловая оклейка — быстрый способ изменить внешний вид катера. Морской винил устойчив к соли, солнцу и влаге. Полная или частичная оклейка, любые цвета и текстуры.',
+    image: '/images/services/boat-vinyl-detail.jpg',
+  },
+  process: {
+    heading: 'Процесс работы',
+    subtitle: 'Оклейка в 4 этапа',
+    steps: [
+      {
+        title: 'Дизайн',
+        text: 'Выбор цвета и концепции',
+        image: '/images/process/boat-vinyl-1.jpg',
+      },
+      {
+        title: 'Подготовка',
+        text: 'Очистка поверхности',
+        image: '/images/process/boat-vinyl-2.jpg',
+      },
+      {
+        title: 'Оклейка',
+        text: 'Профессиональное нанесение',
+        image: '/images/process/boat-vinyl-3.jpg',
+      },
+      {
+        title: 'Детали',
+        text: 'Проработка сложных мест',
+        image: '/images/process/boat-vinyl-4.jpg',
+      },
+    ],
+  },
+  cta: {
+    heading: 'Обновите внешний вид',
+    subheading: 'Покажем варианты для вашего катера',
+  },
+};
+---
+
+<ServicePage lang="ru" service={service} />
