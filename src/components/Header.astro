@@ -11,7 +11,15 @@ const { logo = "лого", currentLang = defaultLang } = Astro.props;
 const t = getTranslations(currentLang as 'ru' | 'en');
 const lang = currentLang;
 
-const basePath = currentLang === defaultLang ? '' : `/${currentLang}`;
+// --- FIX STARTS HERE ---
+// 1. Get the base URL from your config (which will be /detailingriga)
+const base = import.meta.env.BASE_URL;
+
+// 2. Build the basePath including the GitHub repo name
+// If default lang, it's just "/detailingriga". If "en", it's "/detailingriga/en"
+const basePath = currentLang === defaultLang 
+  ? base 
+  : `${base}/${currentLang}`.replace(/\/+$/, ''); // removes trailing slash if any
 
 const navItems = [
   { label: lang === 'ru' ? 'автомобили' : 'cars', href: `${basePath}/cars` },
