@@ -14,19 +14,17 @@ const pathWithoutBase = pathname.replace(base, '/');
 const pathWithoutLang = pathWithoutBase.replace(/^\/(en|ru)/, '') || '/';
 
 function getLocalizedPath(lang: string) {
- 
   let cleanPath = pathname
     .replace(base, '')
     .replace(/^\/?en\//, '/')
-    .replace(/^\/+/, '/');
+    .replace(/^\/+/, '');
   
-  if (cleanPath === '') cleanPath = '/';
+  if (cleanPath === '') cleanPath = '';
   
-
   if (lang === defaultLang) {
-    return `${base}${cleanPath}`.replace('//', '/');
+    return `${base}${cleanPath}`;
   }
-  return `${base}${lang}${cleanPath}`.replace('//', '/');
+  return `${base}en/${cleanPath}`;
 }
 ---
 
