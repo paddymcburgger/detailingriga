@@ -69,21 +69,22 @@ const {
             <div class="card-overlay"></div>
           </div>
           
-          <div class="card-content">
+<div class="card-content">
             <h3 class="card-title">{service.title}</h3>
             <div class="card-buttons">
-<a 
-  href={addBase(service.bookingHref || '#booking')} 
-  class="btn btn-primary"
->
-  {service.bookingLabel || 'booking'}
-</a>
-<a 
-  href={addBase(service.detailsHref || '#')} 
-  class="btn btn-secondary"
->
-  {service.detailsLabel || 'details'}
-</a>
+              <a 
+                href={addBase(service.bookingHref || '#booking')} 
+                class="btn btn-primary"
+              >
+                {service.bookingLabel || 'booking'}
+              </a>
+              <a 
+                href={addBase(service.detailsHref || '#')} 
+                class="btn btn-secondary"
+              >
+                {service.detailsLabel || 'details'}
+              </a>
+            </div>
           </div>
         </article>
       ))}

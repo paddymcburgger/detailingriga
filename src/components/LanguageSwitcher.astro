@@ -7,20 +7,20 @@ interface Props {
 
 const { currentLang = defaultLang } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
 const pathname = Astro.url.pathname;
 
-// Убираем base и язык из пути
-let cleanPath = pathname
-  .replace(import.meta.env.BASE_URL, '')
-  .replace(/^en\//, '')
-  .replace(/^\//, '');
-
 function getLocalizedPath(lang: string) {
+  let cleanPath = pathname
+    .replace(import.meta.env.BASE_URL, '')
+    .replace(/^\/+/, '')
+    .replace(/^en\//, '')
+    .replace(/^en$/, '')
+    .replace(/\/+$/, '');
+
   if (lang === defaultLang) {
-    return cleanPath ? `${base}/${cleanPath}` : `${base}/`;
+    return cleanPath ? `${base}/${cleanPath}/` : `${base}/`;
   }
-  return cleanPath ? `${base}/en/${cleanPath}` : `${base}/en/`;
+  return cleanPath ? `${base}/en/${cleanPath}/` : `${base}/en/`;
 }
 ---
 
@@ -63,5 +63,3 @@ function getLocalizedPath(lang: string) {
     background: rgba(0, 0, 0, 0.05);
   }
 </style>
-```
-
