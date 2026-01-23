@@ -6,16 +6,16 @@ interface Props {
 }
 
 const { currentLang = defaultLang } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
-// Get current path without language prefix
+// Get current path without language prefix and base
 const pathname = Astro.url.pathname;
-const pathWithoutLang = pathname.replace(/^\/(en|ru)/, '') || '/';
+const pathWithoutBase = pathname.replace(base, '/');
+const pathWithoutLang = pathWithoutBase.replace(/^\/(en|ru)/, '') || '/';
 
 function getLocalizedPath(lang: string) {
-  if (lang === defaultLang) {
-    return pathWithoutLang;
-  }
-  return `/${lang}${pathWithoutLang}`;
+  const path = lang === defaultLang ? pathWithoutLang : `/${lang}${pathWithoutLang}`;
+  return `${base}${path}`.replace('//', '/');
 }
 ---
 
