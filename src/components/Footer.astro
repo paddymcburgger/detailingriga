@@ -2,31 +2,25 @@
 interface Props {
   ctaSmall?: string;
   ctaLarge?: string;
-  ctaHref?: string;
   address?: string;
   instagram?: string;
   youtube?: string;
 }
 
-const base = import.meta.env.BASE_URL;
-
 const {
   ctaSmall = 'Нужен Дитейлинг?',
   ctaLarge = 'ДАВАЙТЕ ОБСУДИМ',
-  ctaHref = '/contact',
   address = 'Ул Ебущихся Карликов 69',
   instagram = 'https://instagram.com/',
   youtube = 'https://youtube.com/',
 } = Astro.props;
-
-const fullCtaHref = `${base}${ctaHref}`.replace('//', '/');
 ---
 
 <footer class="footer">
   <div class="footer-container">
-<div class="footer-cta">
+    <div class="footer-cta">
       <span class="cta-small">{ctaSmall}</span>
-      <a href={fullCtaHref} class="cta-large">{ctaLarge}</a>
+      <a href="#contact-form" class="cta-large">{ctaLarge}</a>
     </div>
     
     <div class="footer-info">

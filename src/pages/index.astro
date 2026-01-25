@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import VideoShowcase from '../components/VideoShowcase.astro';
-
+import ContactFormModal from '../components/ContactFormModal.astro';
 import SocialProof from '../components/SocialProof.astro';
 import Footer from '../components/Footer.astro';
 
@@ -15,106 +15,100 @@ import chipRemovalImg from '../assets/images/services/chip-removal.jpg';
 import ppfImg from '../assets/images/services/ppf.jpg';
 import waterStoneImg from '../assets/images/services/water-stone.jpg';
 import headlightsImg from '../assets/images/services/headlights.jpg';
+
 const lang = 'ru';
 const t = getTranslations(lang);
+const base = import.meta.env.BASE_URL;
 
-// Hero slides
 const heroSlides = [
   {
     type: 'image' as const,
     src: heroGlassImg.src,
     title: t.services.glassPolishing,
     subtitle: '-30% вместе с антидождь',
-    primaryBtn: { label: t.hero.booking, href: '#booking' },
-    secondaryBtn: { label: t.hero.learnMore, href: 'cars/glass-restoration' },
+    primaryBtn: { label: t.hero.booking, href: '#contact-form' },
+    secondaryBtn: { label: t.hero.learnMore, href: `${base}/cars/glass-restoration` },
   },
   {
     type: 'image' as const,
     src: heroCeramicImg.src,
     title: t.services.ceramic,
     subtitle: 'Защита до 5 лет',
-    primaryBtn: { label: t.hero.booking, href: '#booking' },
-    secondaryBtn: { label: t.hero.learnMore, href: 'cars/ppf' },
+    primaryBtn: { label: t.hero.booking, href: '#contact-form' },
+    secondaryBtn: { label: t.hero.learnMore, href: `${base}/cars/ppf` },
   },
 ];
 
-// Service cards
 const services = [
   {
     image: chipRemovalImg.src,
     title: t.services.chipRemoval,
-    bookingHref: '#booking',
-    detailsHref: 'cars/chip-removal',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/chip-removal`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: ppfImg.src,
     title: t.services.ppf,
-    bookingHref: '#booking',
-    detailsHref: 'cars/ppf',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/ppf`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: waterStoneImg.src,
     title: t.services.waterStone,
-    bookingHref: '#booking',
-    detailsHref: 'cars/water-stone',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/water-stone`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: headlightsImg.src,
     title: t.services.headlights,
-    bookingHref: '#booking',
-    detailsHref: 'cars/headlights',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/headlights`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
 ];
 
-
-
-// Services 2
 const services2 = [
   {
     image: '/images/services/boat-upholstery.jpg',
     title: t.services.boatUpholstery,
-    bookingHref: 'contact',
-    detailsHref: 'boats/upholstery',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/upholstery`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/boat-vinyl.jpg',
     title: t.services.boatVinyl,
-    bookingHref: 'contact',
-    detailsHref: 'boats/vinyl',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/vinyl`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/signage.jpg',
     title: t.services.signage,
-    bookingHref: 'contact',
-    detailsHref: 'business/signage',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/business/signage`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/windows.jpg',
     title: t.services.windowGraphics,
-    bookingHref: 'contact',
-    detailsHref: 'business/window-graphics',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/business/window-graphics`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
 ];
-
 ---
-
-
 
 <Layout 
   title={t.seo.homeTitle}
@@ -126,10 +120,12 @@ const services2 = [
   <VideoShowcase 
     youtubeId="dQw4w9WgXcQ"
     title={t.services.glassPolishing}
-    primaryBtn={{ label: t.common.booking, href: '#booking' }}
-    secondaryBtn={{ label: t.common.details, href: '/cars/glass-polishing' }}
+    primaryBtn={{ label: t.common.booking, href: '#contact-form' }}
+    secondaryBtn={{ label: t.common.details, href: `${base}/cars/glass-polishing` }}
   />
   <ServiceCards services={services2} />
   <SocialProof />
   <Footer />
+  
+  <ContactFormModal />
 </Layout>
