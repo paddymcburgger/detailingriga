@@ -90,7 +90,7 @@ const alternateEn = lang === 'en' ? canonicalURL : new URL(`/en${Astro.url.pathn
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

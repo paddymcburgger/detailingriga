@@ -1,58 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroCarousel from '../../components/HeroCarousel.astro';
+import boatsHeroImg from '../../assets/images/boats/boats-hero.jpg';
+import waterStoneImg from '../../assets/images/services/water-stone.jpg';
+import headlightsImg from '../../assets/images/services/headlights.jpg';
+
 import ServiceCards from '../../components/ServiceCards.astro';
 import Footer from '../../components/Footer.astro';
+import ContactFormModal from '../../components/ContactFormModal.astro';
 import { getTranslations } from '../../i18n/translations';
+
 
 const lang = 'ru';
 const t = getTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const services = [
   {
     image: '/images/services/glass-restoration.jpg',
     title: 'Восстановление стёкол',
-    bookingHref: '/contact',
-    detailsHref: '/cars/glass-restoration',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/glass-restoration`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/ppf.jpg',
     title: 'Защитная плёнка PPF',
-    bookingHref: '/contact',
-    detailsHref: '/cars/ppf',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/ppf`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/vinyl.jpg',
     title: 'Виниловая оклейка',
-    bookingHref: '/contact',
-    detailsHref: '/cars/vinyl',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/vinyl`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/graphics.jpg',
     title: 'Графика и полосы',
-    bookingHref: '/contact',
-    detailsHref: '/cars/graphics',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/graphics`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/tint.jpg',
     title: 'Тонировка стёкол',
-    bookingHref: '/contact',
-    detailsHref: '/cars/tint',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/tint`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/paint-correction.jpg',
     title: 'Полировка кузова',
-    bookingHref: '/contact',
-    detailsHref: '/cars/paint-correction',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/cars/paint-correction`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
@@ -64,16 +72,31 @@ const services = [
   description="Защита и уход за автомобилем в Риге. PPF, винил, тонировка, полировка, восстановление стёкол."
   lang={lang}
 >
-  <section class="hero">
-    <h1>Автомобили</h1>
-    <p>Защита, уход и преображение</p>
-  </section>
+<HeroCarousel slides={[
+  {
+    type: 'image',
+    src: waterStoneImg.src,
+    title: 'Удаление водного камня',
+    subtitle: 'Восстановление прозрачности стёкол',
+    primaryBtn: { label: 'резервация', href: '#contact-form' },
+    secondaryBtn: { label: 'об услуге', href: '/cars/glass-restoration' },
+  },
+  {
+    type: 'image',
+    src: headlightsImg.src,
+    title: 'Полировка фар',
+    subtitle: 'Возвращаем яркость света',
+    primaryBtn: { label: 'резервация', href: '#contact-form' },
+    secondaryBtn: { label: 'об услуге', href: '/cars/headlights' },
+  },
+]} />
   
   <ServiceCards services={services} />
   <Footer 
   ctaSmall="Искали детейлинг авто в Риге?"
   ctaLarge="ДАВАЙТЕ ОБСУДИМ"
 />
+<ContactFormModal />
 </Layout>
 
 <style>

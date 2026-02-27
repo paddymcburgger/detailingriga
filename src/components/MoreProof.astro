@@ -1,0 +1,256 @@
+---
+interface VideoItem {
+  url: string;
+  title: string;
+}
+
+interface ProofItem {
+  image: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  video?: VideoItem;
+  items: ProofItem[];
+}
+
+const { heading, subheading, video, items } = Astro.props;
+---
+
+<section class="more-proof">
+  {(heading || subheading) && (
+    <div class="more-proof-header">
+      {heading && <h2 class="more-proof-heading">{heading}</h2>}
+      {subheading && <p class="more-proof-subheading">{subheading}</p>}
+    </div>
+  )}
+
+  {video && (
+    <div class="video-wrapper">
+      <div class="video-container">
+        <iframe
+          class="video-player"
+         src={`https://www.youtube.com/embed/${video.url.split('v=')[1]?.split('&')[0]}?autoplay=1&mute=1&loop=1&playlist=${video.url.split('v=')[1]?.split('&')[0]}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <div class="video-overlay"></div>
+        <div class="video-content">
+          <h2 class="video-title">{video.title}</h2>
+          <div class="video-buttons">
+            <span class="btn btn-primary">резервация</span>
+            <span class="btn btn-secondary">об услуге</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+
+  <div class="proof-items">
+    {items.map((item, index) => (
+      <div class={`proof-item ${index % 2 === 1 ? 'reverse' : ''}`}>
+        <div class="proof-item-content">
+          <h3 class="proof-item-title">{item.title}</h3>
+          <p class="proof-item-text">{item.text}</p>
+        </div>
+        <div class="proof-item-image">
+          <img src={item.image} alt={item.title} loading="lazy" />
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .more-proof {
+    padding: 4rem 1.5rem;
+    background: var(--color-white);
+  }
+
+  .more-proof-header {
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .more-proof-heading {
+    font-family: var(--font-main);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+  }
+
+  .more-proof-subheading {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .video-wrapper {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #1a1a1a;
+    border: none;
+    pointer-events: none;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  .video-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    z-index: 10;
+  }
+
+  .video-title {
+    font-family: var(--font-main);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.25rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .video-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-main);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .proof-items {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .proof-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 12px;
+  }
+
+  .proof-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .proof-item-title {
+    font-family: var(--font-main);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+  }
+
+  .proof-item-text {
+    font-family: var(--font-main);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .proof-item-image {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .proof-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .more-proof {
+      padding: 5rem 2rem;
+    }
+
+    .proof-item {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 0;
+      background: transparent;
+    }
+
+    .proof-item.reverse {
+      direction: rtl;
+    }
+
+    .proof-item.reverse > * {
+      direction: ltr;
+    }
+
+    .proof-item-image {
+      aspect-ratio: 4/3;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .more-proof {
+      padding: 6rem 3rem;
+    }
+  }
+</style>

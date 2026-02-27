@@ -1,6 +1,9 @@
 ---
 import Layout from './Layout.astro';
 import { getTranslations } from '../i18n/translations';
+import SocialProofCards from '../components/SocialProofCards.astro';
+import FeaturesGrid from '../components/FeaturesGrid.astro';
+import MoreProof from '../components/MoreProof.astro';
 
 interface ProcessStep {
   title: string;
@@ -26,6 +29,32 @@ interface Service {
     heading: string;
     subheading: string;
   };
+
+    socialProof?: {
+    heading: string;
+    subheading?: string;
+    cards: { image: string; title: string; link?: string; }[];
+  };
+    features?: {
+    heading: string;
+    subheading?: string;
+    items: { icon: string; title: string; description: string; }[];
+  };
+  moreProof?: {
+  heading?: string;
+  subheading?: string;
+  video?: {
+    thumbnail: string;
+    url: string;
+    title: string;
+  };
+  items: {
+    image: string;
+    title: string;
+    text: string;
+  }[];
+};
+
 }
 
 interface Props {
@@ -43,7 +72,7 @@ const contactPath = lang === 'ru' ? '/contact' : '/en/contact';
 
 <Layout title={seoTitle} description={seoDescription} lang={lang}>
   
-  <!-- Hero Section -->
+
   <section class="hero">
     <div class="hero-image" style={`background-image: url(${service.heroImage})`}>
       <div class="hero-overlay"></div>
@@ -54,7 +83,23 @@ const contactPath = lang === 'ru' ? '/contact' : '/en/contact';
     </div>
   </section>
 
-  <!-- Description Section -->
+
+
+
+
+{service.socialProof && (
+    <SocialProofCards {...service.socialProof} />
+  )}
+
+  {service.features && (
+    <FeaturesGrid {...service.features} />
+  )}
+  {service.moreProof && (
+   <MoreProof {...service.moreProof} />
+  )}
+
+
+
   <section class="description">
     <div class="description-container">
       <div class="description-text">
@@ -384,41 +429,7 @@ const contactPath = lang === 'ru' ? '/contact' : '/en/contact';
     flex-wrap: wrap;
   }
 
-  /* Buttons */
-  .btn {
-    font-family: var(--font-main);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.875rem 1.75rem;
-    border-radius: 3px;
-    transition: all 0.25s ease;
-    cursor: pointer;
-    border: none;
-  }
 
-  .btn-primary {
-    background: var(--color-accent);
-    color: #fff;
-    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
-  }
-
-  .btn-primary:hover {
-    background: var(--color-accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-  }
-
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-  }
 
   /* Responsive */
   @media (min-width: 768px) {

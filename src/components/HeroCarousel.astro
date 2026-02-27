@@ -117,13 +117,13 @@ const { slides = defaultSlides } = Astro.props;
     overflow: hidden;
   }
 
-  .carousel {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 57px);
-    min-height: 500px;
-    max-height: 900px;
-  }
+.carousel {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 57px);
+  min-height: 500px;
+  max-height: 75vh;
+}
 
   .carousel-track {
     position: relative;
@@ -308,6 +308,7 @@ const { slides = defaultSlides } = Astro.props;
   @media (min-width: 768px) {
     .hero {
       margin-top: 65px;
+      max-height: 75vh;
     }
 
     .carousel {

@@ -2,9 +2,13 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceCards from '../../components/ServiceCards.astro';
 import Footer from '../../components/Footer.astro';
+
+import SectionHero from '../../components/SectionHero.astro';
+import boatsHeroImg from '../../assets/images/boats/boats-hero.jpg';
+
 import { getTranslations } from '../../i18n/translations';
 
-
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lang = 'ru';
 const t = getTranslations(lang);
 
@@ -12,40 +16,40 @@ const services = [
   {
     image: '/images/services/boat-glass.jpg',
     title: t.services.boatGlass,
-    bookingHref: '/contact',
-    detailsHref: '/boats/glass-restoration',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/glass-restoration`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/boat-ppf.jpg',
     title: t.services.boatPpf,
-    bookingHref: '/contact',
-    detailsHref: '/boats/ppf',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/ppf`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/boat-vinyl.jpg',
     title: t.services.boatVinyl,
-    bookingHref: '/contact',
-    detailsHref: '/boats/vinyl',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/vinyl`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/boat-graphics.jpg',
     title: t.services.boatGraphics,
-    bookingHref: '/contact',
-    detailsHref: '/boats/graphics',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/graphics`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/boat-upholstery.jpg',
     title: t.services.boatUpholstery,
-    bookingHref: '/contact',
-    detailsHref: '/boats/upholstery',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/boats/upholstery`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
@@ -57,17 +61,19 @@ const services = [
   description="Оклейка, полировка, перетяжка салона для яхт и катеров в Риге."
   lang={lang}
 >
-  <section class="hero">
-    <h1>Лодки и катера</h1>
-    <p>Защита, уход и обновление</p>
-  </section>
-  
+  <SectionHero 
+  title="Лодки и катера"
+  subtitle="Защита, уход и обновление"
+  backgroundImage={boatsHeroImg}
+  primaryBtn={{ label: 'резервация', href: '#contact-form' }}
+  secondaryBtn={{ label: 'об услугах', href: '#services' }}
+  />
   <ServiceCards services={services} />
   <Footer 
   ctaSmall="Искали детейлинг яхт в Риге?"
   ctaLarge="ДАВАЙТЕ ОБСУДИМ"
-/>
-</Layout>
+  />
+  </Layout>
 
 <style>
   .hero {

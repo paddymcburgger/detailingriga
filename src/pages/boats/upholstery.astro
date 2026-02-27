@@ -1,10 +1,66 @@
 ---
+
 import ServicePage from '../../layouts/ServicePage.astro';
+import yachtImg from '../../assets/images/gallery/yachts/yacht-cover.jpg';
+import motorboatImg from '../../assets/images/gallery/motorboats/motorboat-cover.jpg';
+import smallBoatImg from '../../assets/images/gallery/small-boats/small-boat-cover.jpg';
+import materialsImg from '../../assets/images/boats/materials.jpg';
+import colorImg from '../../assets/images/boats/color.jpg';
+import precisionImg from '../../assets/images/boats/precision.jpg';
+
+
 
 const service = {
   title: 'Перетяжка салона катера',
   subtitle: 'Обновление интерьера',
   heroImage: '/images/services/boat-upholstery-hero.jpg',
+socialProof: {
+  heading: 'Чехлы и Тенты',
+  subheading: 'на заказ по форме лодки с защитой от UV излучения, соли, влаги',
+  cards: [
+    { image: yachtImg.src, title: 'Яхты', link: '/boats/covers/yacht-cover' },
+    { image: motorboatImg.src, title: 'Катера', link: '/boats/covers/motorboat-cover' },
+    { image: smallBoatImg.src, title: 'Каяки и лодки', link: '/boats/covers/small-boat-cover' },
+    ]
+  },
+
+  features: {
+    heading: 'Стандарт качества',
+    subheading: 'Материалы морского класса, фиксированные сроки, гарантия на работу',
+    items: [
+      { icon: 'anchor', title: 'Материалы морского класса', description: 'Ткани и кожа с защитой от соли, воды и ультрафиолета' },
+      { icon: 'precision', title: 'Точность работ', description: 'Швы и крой по оригинальным размерам мебели' },
+      { icon: 'restore', title: 'Восстановление или на заказ', description: 'Восстанавливаем оригинальную обивку или шьём новую' },
+      { icon: 'guarantee', title: 'Гарантия 1 год', description: 'На все выполненные работы и материалы' },
+    ]
+  },
+
+  moreProof: {
+  heading: 'Тут могут быть примеры (видео) как происходит работа',
+  subheading: 'проектирование чехла под форму лодки для лучшей посадки',
+  video: {
+  url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  title: 'Полировка стёкол',
+  } ,
+  items: [
+    {
+      image: materialsImg.src,
+      title: 'Материалы профессионального качества',
+      text: 'защищает водный транспорт от воздействия окружающей среды не теряя внешних качеств',
+    },
+    {
+      image: colorImg.src,
+      title: 'Индивидуальный подбор цвета',
+      text: 'Дополняет существующий дизайн',
+    },
+    {
+      image: precisionImg.src,
+      title: 'выкройка под точные размеры',
+      text: 'Чехлы и тенты которые под форму вашего водного транспорта',
+    },
+  ]
+},
+
   description: {
     heading: 'Комфорт на воде',
     text: 'Морской винил и ткани для сидений, подушек и панелей. Материалы устойчивы к воде, плесени и УФ-лучам. Восстанавливаем изношенный салон или создаём новый дизайн.',
@@ -14,26 +70,10 @@ const service = {
     heading: 'Процесс работы',
     subtitle: 'Перетяжка в 4 этапа',
     steps: [
-      {
-        title: 'Осмотр',
-        text: 'Оцениваем объём работ',
-        image: '/images/process/boat-upholstery-1.jpg',
-      },
-      {
-        title: 'Материал',
-        text: 'Выбор ткани и цвета',
-        image: '/images/process/boat-upholstery-2.jpg',
-      },
-      {
-        title: 'Пошив',
-        text: 'Изготовление новых чехлов',
-        image: '/images/process/boat-upholstery-3.jpg',
-      },
-      {
-        title: 'Установка',
-        text: 'Монтаж в салон катера',
-        image: '/images/process/boat-upholstery-4.jpg',
-      },
+      { title: 'Осмотр', text: 'Оцениваем объём работ', image: '/images/process/boat-upholstery-1.jpg' },
+      { title: 'Материал', text: 'Выбор ткани и цвета', image: '/images/process/boat-upholstery-2.jpg' },
+      { title: 'Пошив', text: 'Изготовление новых чехлов', image: '/images/process/boat-upholstery-3.jpg' },
+      { title: 'Установка', text: 'Монтаж в салон катера', image: '/images/process/boat-upholstery-4.jpg' },
     ],
   },
   cta: {

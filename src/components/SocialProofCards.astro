@@ -1,0 +1,176 @@
+---
+interface Card {
+  image: string;
+  title: string;
+  link?: string;
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  cards: Card[];
+}
+
+const { heading, subheading, cards } = Astro.props;
+---
+
+<section class="social-proof">
+  {(heading || subheading) && (
+    <div class="social-proof-header">
+      {heading && <h2 class="social-proof-heading">{heading}</h2>}
+      {subheading && <p class="social-proof-subheading">{subheading}</p>}
+    </div>
+  )}
+  
+  <div class="social-proof-cards">
+    {cards.map((card) => (
+      <a href={card.link || '#'} class="social-proof-card">
+        <div class="card-image">
+          <img src={card.image} alt={card.title} loading="lazy" />
+          <div class="card-overlay"></div>
+        </div>
+        <span class="card-title">{card.title}</span>
+      </a>
+    ))}
+  </div>
+  
+  <div class="social-proof-dots">
+    {cards.map((_, index) => (
+      <span class={`dot ${index === 0 ? 'active' : ''}`}></span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    padding: 4rem 1.5rem;
+    background: var(--color-white);
+  }
+
+  .social-proof-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .social-proof-heading {
+    font-family: var(--font-main);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+  }
+
+  .social-proof-subheading {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .social-proof-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .social-proof-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    aspect-ratio: 4 / 3;
+  }
+
+  .card-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .social-proof-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    font-family: var(--font-main);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1;
+  }
+
+  .social-proof-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .social-proof {
+      padding: 5rem 2rem;
+    }
+
+    .social-proof-cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .social-proof-card {
+      aspect-ratio: 3 / 4;
+    }
+
+    .social-proof-dots {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .social-proof {
+      padding: 6rem 3rem;
+    }
+
+    .social-proof-cards {
+      gap: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      bottom: 1.5rem;
+      left: 1.5rem;
+    }
+  }
+</style>

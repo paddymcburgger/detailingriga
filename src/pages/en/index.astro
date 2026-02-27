@@ -5,9 +5,10 @@ import ServiceCards from '../../components/ServiceCards.astro';
 import VideoShowcase from '../../components/VideoShowcase.astro';
 import SocialProof from '../../components/SocialProof.astro';
 import Footer from '../../components/Footer.astro';
+import ContactFormModal from '../../components/ContactFormModal.astro';
 import { getTranslations } from '../../i18n/translations';
 
-
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lang = 'en';
 const t = getTranslations(lang);
 
@@ -18,16 +19,16 @@ const heroSlides = [
     src: '/images/hero-glass-polishing.jpg',
     title: t.services.glassPolishing,
     subtitle: '-30% with rain repellent',
-    primaryBtn: { label: t.hero.booking, href: '#booking' },
-    secondaryBtn: { label: t.hero.learnMore, href: '/en/services/glass-polishing' },
+    primaryBtn: { label: t.hero.booking, href: '#contact-form' },
+    secondaryBtn: { label: t.hero.learnMore, href: `${base}/en/services/glass-polishing` },
   },
   {
     type: 'image' as const,
     src: '/images/hero-ceramic.jpg',
     title: t.services.ceramic,
     subtitle: 'Protection up to 5 years',
-    primaryBtn: { label: t.hero.booking, href: '#booking' },
-    secondaryBtn: { label: t.hero.learnMore, href: '/en/services/ceramic-coating' },
+    primaryBtn: { label: t.hero.booking, href: '#contact-form' },
+    secondaryBtn: { label: t.hero.learnMore, href: `${base}/en/services/ceramic-coating` },
   },
 ];
 
@@ -36,32 +37,32 @@ const services = [
   {
     image: '/images/services/chip-removal.jpg',
     title: t.services.chipRemoval,
-    bookingHref: '#booking',
-    detailsHref: '/en/services/chip-removal',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/en/services/chip-removal`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/ppf.jpg',
     title: t.services.ppf,
-    bookingHref: '#booking',
-    detailsHref: '/en/services/ppf',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/en/services/ppf`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/water-stone.jpg',
     title: t.services.waterStone,
-    bookingHref: '#booking',
-    detailsHref: '/en/services/water-spot-removal',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/en/services/water-spot-removal`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
   {
     image: '/images/services/headlights.jpg',
     title: t.services.headlights,
-    bookingHref: '#booking',
-    detailsHref: '/en/services/headlight-restoration',
+    bookingHref: '#contact-form',
+    detailsHref: `${base}/en/services/headlight-restoration`,
     bookingLabel: t.common.booking,
     detailsLabel: t.common.details,
   },
@@ -78,17 +79,18 @@ const services = [
   <VideoShowcase 
     youtubeId="dQw4w9WgXcQ"
     title={t.services.glassPolishing}
-    primaryBtn={{ label: t.common.booking, href: '#booking' }}
-    secondaryBtn={{ label: t.common.details, href: '/en/services/glass-polishing' }}
+    primaryBtn={{ label: t.common.booking, href: '#contact-form' }}
+    secondaryBtn={{ label: t.common.details, href: `${base}/en/services/glass-polishing` }}
   />
   <SocialProof 
-  text="see examples of restoration and protection work, over 10 types of car and yacht care services"
-  linkText="view our projects"
-  linkHref="/en/projects"
-/>
-<Footer 
-  ctaSmall="Need Detailing?"
-  ctaLarge="LET'S TALK"
-  ctaHref="/en/contact"
-/>
+    text="see examples of restoration and protection work, over 10 types of car and yacht care services"
+    linkText="view our projects"
+    linkHref={`${base}/en/projects`}
+  />
+  <Footer 
+    ctaSmall="Need Detailing?"
+    ctaLarge="LET'S TALK"
+    ctaHref="#contact-form"
+  />
+  <ContactFormModal />
 </Layout>
